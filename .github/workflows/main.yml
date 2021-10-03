@@ -33,4 +33,10 @@ jobs:
         with:
           name: my-artifact
           path: /home/runner/work/java-demo-app/java-demo-app/target/site
+          
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: /home/runner/work/java-demo-app/java-demo-app/target/surefire-reports/*.xml
      
