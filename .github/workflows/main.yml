@@ -40,5 +40,5 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          files: "*/target/surefire-reports/*.xml"
+          files: "/home/runner/work/java-demo-app/java-demo-app/target/surefire-reports/*.xml"
      
