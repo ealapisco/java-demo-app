@@ -46,20 +46,22 @@ jobs:
         uses: warchant/setup-sonar-scanner@v3
       - name: "Overwrite sonar config file"
         run: "cp /home/vagrant/sonar-scanner.properties /home/vagrant/_work/_tool/sonar-scanner/4.2.0.1873/x64/sonar-scanner-4.2.0.1873-linux/conf/"
-      - name: Run sonarqube
-        env:
+      #- name: Run sonarqube
+      #  env:
         # to get access to secrets.SONAR_TOKEN, provide GITHUB_TOKEN
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: sonar-scanner
-              -Dsonar.login=db8faa899a39f6435519bf6afad31f6e99b465a2 
-              -Dsonar.host.url=http://sonarqube.sd.astrazeneca.com 
-              -Dsonar.projectKey=sonar-scanner-action 
-              -Dsonar.projectKey=spring-boot-api-template 
-              -Dsonar.projectName=spring-boot-api-template 
-              -Dsonar.projectVersion=1.0 
-              -Dsonar.sources=src/main 
-              -Dsonar.exclude="src/test/**, src/main/java/az/api/model/**" 
-              -Dsonar.sourceEncoding=UTF-8 
-              -Dsonar.login=admin 
-              -Dsonar.password=admin 
-              -Dsonar.java.binaries=target/classes
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  run: sonar-scanner
+      #        -Dsonar.login=db8faa899a39f6435519bf6afad31f6e99b465a2 
+      #        -Dsonar.host.url=http://sonarqube.sd.astrazeneca.com 
+      #        -Dsonar.projectKey=sonar-scanner-action 
+      #        -Dsonar.projectKey=spring-boot-api-template 
+      #        -Dsonar.projectName=spring-boot-api-template 
+      #        -Dsonar.projectVersion=1.0 
+      #        -Dsonar.sources=src/main 
+      #        -Dsonar.exclude="src/test/**, src/main/java/az/api/model/**" 
+      #        -Dsonar.sourceEncoding=UTF-8 
+      #        -Dsonar.login=admin 
+      #        -Dsonar.password=admin 
+      #        -Dsonar.java.binaries=target/classes
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
