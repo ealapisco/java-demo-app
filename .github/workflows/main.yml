@@ -21,11 +21,7 @@ jobs:
     steps:
       - name: "Checkout project from repo"
         uses: actions/checkout@v2
-      - name: "Bulding project"
-        uses: xlui/action-maven-cli@jdk15
-        with:
-          lifecycle: 'clean package'
-      - name: "Running unit tests"
+      - name: "Building project - Unit tests"
         uses: xlui/action-maven-cli@jdk15
         with:
           lifecycle: 'clean package test site'
@@ -52,17 +48,16 @@ jobs:
         env:
         # to get access to secrets.SONAR_TOKEN, provide GITHUB_TOKEN
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          sonar-scanner \
-          -Dsonar.login=db8faa899a39f6435519bf6afad31f6e99b465a2 \
-          -Dsonar.host.url=http://sonarqube.sd.astrazeneca.com \
-          -Dsonar.projectKey=sonar-scanner-action \
-          -Dsonar.projectKey=spring-boot-api-template \
-          -Dsonar.projectName=spring-boot-api-template \
-          -Dsonar.projectVersion=1.0 \
-          -Dsonar.sources=src/main \
-          -Dsonar.exclude="src/test/**, src/main/java/az/api/model/**" \
-          -Dsonar.sourceEncoding=UTF-8 \
-          -Dsonar.login=admin \
-          -Dsonar.password=admin \
-          -Dsonar.java.binaries=target/classes
+        run: sonar-scanner
+              -Dsonar.login=db8faa899a39f6435519bf6afad31f6e99b465a2 
+              -Dsonar.host.url=http://sonarqube.sd.astrazeneca.com 
+              -Dsonar.projectKey=sonar-scanner-action 
+              -Dsonar.projectKey=spring-boot-api-template 
+              -Dsonar.projectName=spring-boot-api-template 
+              -Dsonar.projectVersion=1.0 
+              -Dsonar.sources=src/main 
+              -Dsonar.exclude="src/test/**, src/main/java/az/api/model/**" 
+              -Dsonar.sourceEncoding=UTF-8 
+              -Dsonar.login=admin 
+              -Dsonar.password=admin 
+              -Dsonar.java.binaries=target/classes
