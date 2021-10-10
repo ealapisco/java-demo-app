@@ -44,6 +44,8 @@ jobs:
       #    folder: "/home/runner/work/java-demo-app/java-demo-app/target/site" 
       - name: Setup sonarqube
         uses: warchant/setup-sonar-scanner@v3
+      - name: "Overwrite sonar config file"
+        run: "cp /home/vagrant/sonar-scanner.properties /home/vagrant/_work/_tool/sonar-scanner/4.2.0.1873/x64/sonar-scanner-4.2.0.1873-linux/conf/"
       - name: Run sonarqube
         env:
         # to get access to secrets.SONAR_TOKEN, provide GITHUB_TOKEN
