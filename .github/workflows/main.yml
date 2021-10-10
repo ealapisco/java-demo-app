@@ -25,11 +25,6 @@ jobs:
         uses: xlui/action-maven-cli@jdk15
         with:
           lifecycle: 'clean package'
-          
-  Unit-Tests:
-    runs-on: ubuntu-latest
-    steps:
-      - run: cd /home/runner/work/java-demo-app/java-demo-app
       - name: "Running unit tests"
         uses: xlui/action-maven-cli@jdk15
         with:
