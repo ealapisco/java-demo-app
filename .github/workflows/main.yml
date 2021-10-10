@@ -15,25 +15,29 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  Build:
+    runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: "Checkout project from repo"
       - uses: actions/checkout@v2
-      
+      - name: "Bulding project"
       - uses: xlui/action-maven-cli@jdk15
         with:
-          lifecycle: 'clean package test site'
+          lifecycle: 'clean package'
           
+  Unit-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Running unit tests"
+      - uses: xlui/action-maven-cli@jdk15
+        with:
+          lifecycle: 'test site'
+      - name: "Archiving unit test results as artifact"
       - uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: unit-tests-results
           path: /home/runner/work/java-demo-app/java-demo-app/target/site
-          
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
