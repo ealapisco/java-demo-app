@@ -28,12 +28,14 @@ jobs:
       - name: "Running unit tests"
         uses: xlui/action-maven-cli@jdk15
         with:
-          lifecycle: 'test site'
+          lifecycle: 'clean package test site'
       - name: "Archiving unit test results as artifact"
         uses: actions/upload-artifact@v2
         with:
           name: unit-tests-results
           path: /home/runner/work/java-demo-app/java-demo-app/target/site
+      - name: "LS Surefire folder"
+        run: "ls /home/runner/work/java-demo-app/java-demo-app/target/surefire-reports/"
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
