@@ -20,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout project from repo"
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: "Bulding project"
-      - uses: xlui/action-maven-cli@jdk15
+        uses: xlui/action-maven-cli@jdk15
         with:
           lifecycle: 'clean package'
           
@@ -30,11 +30,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Running unit tests"
-      - uses: xlui/action-maven-cli@jdk15
+        uses: xlui/action-maven-cli@jdk15
         with:
           lifecycle: 'test site'
       - name: "Archiving unit test results as artifact"
-      - uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: unit-tests-results
           path: /home/runner/work/java-demo-app/java-demo-app/target/site
