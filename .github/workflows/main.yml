@@ -35,12 +35,12 @@ jobs:
           name: unit-tests-results
           path: /home/runner/work/java-demo-app/java-demo-app/target/site
       - name: "LS Surefire folder"
-        run: "ls /home/runner/work/java-demo-app/java-demo-app/target/surefire-reports/"
+        run: "ls /home/vagrant/_work/java-demo-app/java-demo-app/target/surefire-reports/"
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          files: "/home/runner/work/java-demo-app/java-demo-app/target/surefire-reports/*.xml" 
+          files: "/home/vagrant/_work/java-demo-app/java-demo-app/target/surefire-reports/*.xml" 
       #- name: Deploy 🚀
       #  uses: JamesIves/github-pages-deploy-action@4.1.5
       #  with:
