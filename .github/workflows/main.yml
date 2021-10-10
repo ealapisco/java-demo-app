@@ -66,6 +66,6 @@ jobs:
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         env:
-          SONAR_TOKEN: "db8faa899a39f6435519bf6afad31f6e99b465a2"
+          SONAR_TOKEN: "3921b2d4ddb6a066e9a78ddedee5718110c5128a"
           SONAR_HOST_URL: "http://sonarqube.sd.astrazeneca.com"
           LC_ALL: "en_US.UTF-8"
