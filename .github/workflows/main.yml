@@ -41,7 +41,7 @@ jobs:
       - name: "Sonar Scan"
         uses: xlui/action-maven-cli@jdk15
         with:
-          lifecycle: 'sonar:sonar -Dsonar.host.url=http://sonarqube.sd.astrazeneca.com -Dmaven.test.failure.ignore=true -Dsonar.login=db8faa899a39f6435519bf6afad31f6e99b465a2'
+          lifecycle: '-X sonar:sonar -Dsonar.host.url=http://sonarqube.sd.astrazeneca.com -Dmaven.test.failure.ignore=true -Dsonar.login=db8faa899a39f6435519bf6afad31f6e99b465a2'
       
       
       #- name: Deploy 🚀
