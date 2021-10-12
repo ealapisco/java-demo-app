@@ -22,7 +22,7 @@ jobs:
       - name: "Checkout project from repo"
         uses: actions/checkout@v2
       - name: "Building project - Unit tests"
-        uses: xlui/action-maven-cli@jdk15
+        uses: xlui/action-maven-cli@jdk8
         with:
           lifecycle: 'clean package test site'
       - name: "Archiving unit test results as artifact"
