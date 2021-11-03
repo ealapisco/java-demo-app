@@ -29,7 +29,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: unit-tests-results
-          path: /home/runner/work/java-demo-app/java-demo-app/target/site
+          path: /home/vagrant/_work/java-demo-app/java-demo-app/target/site
+      - name: "Publishing html reports"
+        run: "export DATE=$(date +%s); cp -R ~/mydir/ /var/www//html/${DATE}; echo 'http://localhost:8080/${DATE}'"
       - name: "LS Surefire folder"
         run: "ls /home/vagrant/_work/java-demo-app/java-demo-app/target/surefire-reports/"
       - name: Publish Unit Test Results
